@@ -1,0 +1,45 @@
+<h3>Create Employee</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <input type="file" (change)="onFileChanged($event)">
+      <img [src]="imgURL" height="200" *ngIf="imgURL">
+  </div>
+  <!-- <input type="button" (click)="onUpload()" value="upload"> -->
+  
+  <hr />
+  
+  <!-- Received Image: -->
+  
+  <!-- {{ receivedImageData['data']|json}} -->
+  <!-- <img [src]="convertedImage" > -->
+
+    <div class="form-group">
+      <label for="name">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName" name="firstName">
+    </div>
+    <div class="form-group">
+      <!-- <label for="name">Image</label> -->
+      <input type="hidden" class="form-control" id="data" required [(ngModel)]="employee.data" name="data" value="{{imgURL}}">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Email Id</label>
+      <input type="text" class="form-control" id="emailId" required [(ngModel)]="employee.emailId" name="emailId">
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!containsError && !submitted">
+  <h4>{{error}}</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+  <button class="btn btn-success" (click)="gotoList()">Go Back</button>
+</div>
+

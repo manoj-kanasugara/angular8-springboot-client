@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Employee List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Profile Pic</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th style="padding-left: 100px;"> Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td style="height: 100px; width: 100px;"><img src="{{employee.data}}"></td>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.emailId}}</td>
+            <td>
+              <button (click)="updateEmployee(employee.id)" style="margin-left: 10px" class="btn btn-primary">Update</button>
+              <button (click)="deleteEmployee(employee.id)" style="margin-left: 10px" class="btn btn-danger">Delete</button>
+                <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
+      <ul class="nav nav-pills">
+        <li class="nav-item" *ngFor="let p of pages; let i=index" >
+          <a class="nav-link active" (click)="setPage(i,$event)"
+          [ngClass]="{'active':i==page}">{{i}}</a>
+
+        </li>
+      </ul>
+    </div>
+  </div>
